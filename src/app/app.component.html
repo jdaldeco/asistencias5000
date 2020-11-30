@@ -1,0 +1,13 @@
+<nav class="navbar">
+  <div class="logo"><img [routerLink]="['/']" src="../assets/asistencias-ico.png" alt="Asistencia Logo"></div>
+  <ul>
+    <li><a [routerLink]="['/']">Inicio</a></li>
+    <li><a [routerLink]="['vista-cursos']">Cursos</a>
+    </li>
+    <li><a [routerLink]="['vista-grupos']">Grupos</a>
+    </li>
+    <li><a [routerLink]="['/dnd']">Lista de asistencia</a></li>
+    <li><a href=""><img src="../assets/user-placeholder.png"> Gilberto Borrego</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+$light-gray: #DED5EA;
+$semi-gray: #A79EB2;
+$pearl-pink: #ae9eb3;
+$color-green: #005B42;
+$semi-black: #222123;
+
+$shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+$shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+
+$bp-largest: 75em;     // 1200px
+$bp-large: 68.75em;    // 1100px
+$bp-medium: 56.25em;   // 900px
+$bp-small: 37.5em;     // 600px
+$bp-smallest: 31.25em; // 500px
+
+.home-container {
+    height: 58rem;
+    background: url(https://www.brainpickings.org/wp-content/themes/brainpickings/images/bckgd_body.png);
+
+    .header {
+        width: 100%;
+        height: 25rem;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        background: $color-green;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        .header {
+            height: 20rem;
+        }
+    }
+
+    .header_logo {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding-top: 10rem;
+        font-size: 7rem;
+        text-shadow: 0.5rem 1rem rgba(black, .1);
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        .header_logo {
+            padding-top: 8rem;
+            font-size: 4rem;
+        }
+    }
+}
+

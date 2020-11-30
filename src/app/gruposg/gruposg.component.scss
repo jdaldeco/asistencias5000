@@ -1,0 +1,145 @@
+$light-gray: #DED5EA;
+$semi-gray: #A79EB2;
+$pearl-pink: #ae9eb3;
+$color-green: #005B42;
+$semi-black: #222123;
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+$shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+$shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+
+$bp-largest: 75em;     // 1200px
+$bp-large: 68.75em;    // 1100px
+$bp-medium: 56.25em;   // 900px
+$bp-small: 37.5em;     // 600px
+$bp-smallest: 31.25em; // 500px
+
+.botonsin {
+    background: white;
+    border: 0.25rem solid black;
+    cursor: pointer;
+    font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+    letter-spacing: 0.25rem;
+    margin: 0.5rem;
+    padding: 0.5em 0.75em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.botonsin:hover {
+    border: 0.25rem dashed black;
+    top: 0.25rem;
+    left: 0.25rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+    width: 50%;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    padding: 3rem 5rem;
+    box-sizing: border-box;
+    border: 3px solid $semi-black;
+    border-radius: 2px;
+    text-align: center;
+    box-shadow: 0 0 0.5rem #00000065;
+    font-family: 'Montserrat', sans-serif;
+
+    h2 {
+        font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+        font-size: 3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25rem;
+    }
+
+    p {
+        border: 1px solid $semi-gray;
+        margin: 8px 0;
+        margin-bottom: 2rem;
+        padding: 12px 12px;
+        border-radius: 2px;
+
+        label {
+            display: block;
+            text-align: left;
+        }
+
+        input[type=text] {
+            width: 100%;
+            border: none;
+            background: none;
+            outline: none;
+            border-bottom: 2px solid $semi-gray;
+        }
+
+        #cursos-select {
+            width: 100%;
+            border: none;
+            background: none;
+            outline: none;
+            border: 2px solid $semi-gray;
+            padding: 1rem;
+            cursor: pointer;
+        }
+
+        
+    }
+
+    .msg-success {
+        background: $color-green;
+        color: white;
+    }
+
+    .msg-failed {
+        background: rgb(124, 39, 39);
+        color: white;
+    }
+
+    input[type=button], input[type=submit] {
+        display: inline-block;
+        margin-right: 3rem;
+        margin-left: 3rem;
+        padding: 14px 0;
+        color: $semi-black;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin-top: 1rem;
+        width: 40%;
+    }
+
+    input[type=text]:focus {
+        border-bottom: 2px solid $semi-black;
+        background: rgba($semi-black,.04);
+        box-shadow: inset 0 -1px 0 rgba($semi-black, 1);
+    }
+    input[type=text]:focus::-webkit-input-placeholder  {
+        color:transparent;
+        transition: 0.1s;
+    }
+
+    input[type=button], input[type=submit] {
+        border: 1px solid $semi-black;
+    }
+
+    input[type=button]:hover {
+        transition: 0.3s;
+        background: rgb(124, 39, 39);
+        color: white;
+    }
+
+    input[type=submit]:hover {
+        transition: 0.3s;
+        background: #0a6e55;
+        color: white;
+    }
+
+    input[type=submit][disabled] {
+        background: #A79EB2;
+    }
+
+    input[type=submit][disabled]:hover {
+        color: $semi-black;
+    }
+}

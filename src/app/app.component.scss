@@ -1,0 +1,125 @@
+$light-gray: #DED5EA;
+$semi-gray: #A79EB2;
+$pearl-pink: #ae9eb3;
+$color-green: #005B42;
+$semi-black: #222123;
+
+$shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+$shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+
+$bp-largest: 75em;     // 1200px
+$bp-large: 68.75em;    // 1100px
+$bp-medium: 56.25em;   // 900px
+$bp-small: 37.5em;     // 600px
+$bp-smallest: 31.25em; // 500px
+
+.navbar {
+    background-color: $semi-black;
+    padding: 0;
+    margin: 0;
+    height: 7rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    @media only screen and (max-width: $bp-medium) {
+        flex-wrap: wrap;
+        align-content: space-around;
+        height: 5rem;
+    }
+
+    .logo {
+        margin-left: 1rem;
+        background-color: white;
+        
+        img {
+            height: 4rem;
+        }
+    }
+}
+
+.navbar ul {
+    float: right;
+    list-style: none;
+    position: relative;
+    margin-right: 1rem;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.navbar ul li a:hover {
+    transition: all 300ms;
+    color: #00b887;
+    box-shadow: 0 0 5px $color-green,
+                0 0 5px $pearl-pink;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    line-height: 7rem;
+    font-size: 2rem;
+    padding: 0.9rem 1.5rem;
+}
+
+.navbar ul ul {
+    position: absolute;
+    top: 3rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: top .3s;
+}
+
+.navbar ul li:hover > ul {
+    top: 6rem;
+    opacity: 1;
+    visibility: visible;
+}
+
+.navbar ul ul li {
+    position: relative;
+    margin: 0rem;
+    width: 10rem;
+    float: none;
+    display: list-item;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: $semi-black;
+}
+
+
+@media only screen and (max-width: $bp-medium) {
+    .navbar ul ul li {
+        width: 7rem;
+    }
+}
+
+.navbar ul ul li a {
+    line-height: 5rem;
+}
+
+@media only screen and (max-width: $bp-medium) {
+    .navbar ul ul li a {
+        line-height: 3rem;
+    }
+}
+
+.navbar ul ul li a:hover {
+    color: #00b887;
+    box-shadow: none;
+}
+
+@media only screen and (max-width: $bp-medium) {
+    .navbar ul li a {
+        font-size: 80%;
+    }
+}
+
+a img {
+    height: 3rem;
+    border-radius: 50%;
+}
