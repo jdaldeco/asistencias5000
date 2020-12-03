@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { GruposComponent } from './grupos/grupos.component';
 import { GrupostableComponent } from './grupostable/grupostable.component';
 import { GruposgComponent } from './gruposg/gruposg.component';
+import { ReadCSVComponent } from './read-csv/read-csv.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GruposgComponent } from './gruposg/gruposg.component';
     HomeComponent,
     GruposComponent,
     GrupostableComponent,
-    GruposgComponent
+    GruposgComponent,
+    ReadCSVComponent
   ],
   imports: [
     BrowserModule,

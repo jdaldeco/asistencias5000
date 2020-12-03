@@ -8,6 +8,8 @@ import { CursocComponent } from './cursoc/cursoc.component';
 import { GrupostableComponent } from './grupostable/grupostable.component';
 import { GruposComponent } from './grupos/grupos.component';
 import { GruposgComponent } from './gruposg/gruposg.component';
+import { ReadCSVComponent } from './read-csv/read-csv.component';
+
 
 import { HomeComponent } from './home/home.component';
 
@@ -19,7 +21,9 @@ const appRoutes: Routes = [
     { path: 'cursoc', component: CursocComponent },
     { path: 'vista-grupos', component: GruposComponent }, 
     { path: 'gruposg', component: GruposgComponent }, 
-    { path: 'grupos-table', component: GrupostableComponent }
+    { path: 'grupos-table', component: GrupostableComponent },
+    { path: 'tabla-archivos', component: ReadCSVComponent}
+
 ];
 
 export const appRoutingProviders: any[] = [];

@@ -1,0 +1,21 @@
+<input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" />
+<table class="minimalistBlack" *ngIf="archivos.length > 0">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Asistencias</th>
+      <th>Unidad</th>
+      <th>Grupo</th>
+      <th>Curso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let archivo of archivos;let i = index;">
+      <td> <span>{{archivo.nombreAlumno}}</span> </td>
+      <td> <span>{{archivo.asistencia}}</span> </td>
+      <td> <span>{{archivo.unidadC}}</span> </td>
+      <td> <span>{{archivo.grupo}}</span> </td>
+      <td> <span>{{archivo.curso}}</span> </td>
+    </tr>
+  </tbody>
+</table>
