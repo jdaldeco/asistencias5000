@@ -1,0 +1,49 @@
+$light-gray: #DED5EA;
+$semi-gray: #A79EB2;
+$pearl-pink: #ae9eb3;
+$color-green: #005B42;
+$semi-black: #222123;
+
+$shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+$shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+
+$bp-largest: 75em;     // 1200px
+$bp-large: 68.75em;    // 1100px
+$bp-medium: 56.25em;   // 900px
+$bp-small: 37.5em;     // 600px
+$bp-smallest: 31.25em; // 500px
+
+.table-container {
+    margin-top: 1rem;
+    padding: 2rem;
+}
+
+.b-container {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .b-edit {
+        width: 3rem;
+        height: 3rem;
+        background: url('../../assets/edit-icon.png');
+        background-size: cover;
+        border: none;
+    }
+    
+    .b-remove {
+        width: 3rem;
+        height: 3rem;
+        background: url('../../assets/remove-icon.png');
+        background-size: cover;
+        border: none;
+    }
+
+    .b-edit:hover, 
+    .b-remove:hover {
+        top: 0.25rem;
+        left: 0.25rem;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    }
+}

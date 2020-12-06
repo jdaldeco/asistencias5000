@@ -42,8 +42,6 @@ export class ReadCSVComponent{
         csvRecord.nombreAlumno = curruntRecord[0].trim();
         csvRecord.asistencia = curruntRecord[1].trim();
         csvRecord.unidadC = curruntRecord[2].trim();
-        csvRecord.grupo = curruntRecord[3].trim();
-        csvRecord.curso = curruntRecord[4].trim();
         csvArr.push(csvRecord);
       }
     }
