@@ -8,7 +8,6 @@ import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { DndDirective } from './asistencias5000.directive';
-import { DndComponent } from './dnd/dnd.component';
 import { ProgressComponent } from './progress/progress.component';
 
 import { DataTablesModule } from 'angular-datatables';
@@ -26,7 +25,6 @@ import { ReadCSVComponent } from './read-csv/read-csv.component';
   declarations: [
     AppComponent,
     DndDirective,
-    DndComponent,
     ProgressComponent,
     CursostableComponent,
     CursosComponent,

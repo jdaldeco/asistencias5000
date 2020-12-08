@@ -10,10 +10,13 @@ export class ReadCSVComponent{
   title = 'Leer archivos CSV';
   public archivos: any[] = [];
   @ViewChild('csvReader') csvReader: any;
+  
+  
+  
   uploadListener($event: any): void {
-
     let text = [];
     let files = $event.srcElement.files;
+    
     if (this.isValidCSVFile(files[0])) {
       let input = $event.target;
       let reader = new FileReader();
@@ -36,12 +39,11 @@ export class ReadCSVComponent{
   getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {
     let csvArr = [];
     for (let i = 1; i < csvRecordsArray.length; i++) {
-      let curruntRecord = (<any>csvRecordsArray[i]).split(',');
+      let curruntRecord = (<any>csvRecordsArray[i]).split('',2);
       if (curruntRecord.length == headerLength) {
         let csvRecord: Sesion = new Sesion('',[[],[]],0,'','');
-        csvRecord.nombreAlumno = curruntRecord[0].trim();
-        csvRecord.asistencia = curruntRecord[1].trim();
-        csvRecord.unidadC = curruntRecord[2].trim();
+        csvRecord.nombreAlumno = curruntRecord[0].trim('');
+        csvRecord.asistencia = curruntRecord[1].trim('');
         csvArr.push(csvRecord);
       }
     }
@@ -53,7 +55,7 @@ export class ReadCSVComponent{
     return file.name.endsWith(".csv");
   }
   getHeaderArray(csvRecordsArr: any) {
-    let headers = (<string>csvRecordsArr[0]).split(',');
+    let headers = (<string>csvRecordsArr[0]).split('',2);
     let headerArray = [];
     for (let j = 0; j < headers.length; j++) {
       headerArray.push(headers[j]);
