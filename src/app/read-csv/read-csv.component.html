@@ -6,14 +6,14 @@
       <tr>
         <th>Nombre</th>
         <th>Asistencias</th>
-        <th>Unidad</th>
+        <th>Hora</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let archivo of archivos;let i = index;">
         <td> <span>{{archivo.nombreAlumno}}</span> </td>
         <td> <span>{{archivo.asistencia}}</span> </td>
-        <td> <span>{{archivo.unidadC}}</span> </td>
+        <td> <span>{{archivo.curso}}</span> </td>
         <td>
           <div class="b-container">
             <button class="b-edit"></button>

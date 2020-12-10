@@ -24,8 +24,9 @@ export class ReadCSVComponent{
       reader.onload = () => {
         let csvData = reader.result;
         let csvRecordsArray = (<string>csvData).split(/\r\n|\n/);
-        let headersRow = this.getHeaderArray(csvRecordsArray);
-        this.archivos = this.getDataRecordsArrayFromCSVFile(csvRecordsArray, headersRow.length);
+        console.log(csvRecordsArray); 
+        
+        this.archivos = this.getDataRecordsArrayFromCSVFile(csvRecordsArray);
       };
       reader.onerror = function () {
         console.log('error is occured while reading file!');
@@ -36,16 +37,19 @@ export class ReadCSVComponent{
     }
   }
   
-  getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {
+  getDataRecordsArrayFromCSVFile(csvRecordsArray: any) {
     let csvArr = [];
-    for (let i = 1; i < csvRecordsArray.length; i++) {
-      let curruntRecord = (<any>csvRecordsArray[i]).split('',2);
-      if (curruntRecord.length == headerLength) {
+    for (let i = 3; i < csvRecordsArray.length; i++) {
+      let curruntRecord = (<any>csvRecordsArray[i]).split('\t');
+      console.log(curruntRecord); 
+      
         let csvRecord: Sesion = new Sesion('',[[],[]],0,'','');
-        csvRecord.nombreAlumno = curruntRecord[0].trim('');
-        csvRecord.asistencia = curruntRecord[1].trim('');
+        csvRecord.nombreAlumno = curruntRecord[0].trim();
+        csvRecord.asistencia = curruntRecord[1]; 
+        csvRecord.curso = curruntRecord[2]; 
+ 
         csvArr.push(csvRecord);
-      }
+      
     }
     return csvArr;
   }
@@ -54,14 +58,16 @@ export class ReadCSVComponent{
   isValidCSVFile(file: any) {
     return file.name.endsWith(".csv");
   }
-  getHeaderArray(csvRecordsArr: any) {
-    let headers = (<string>csvRecordsArr[0]).split('',2);
+  
+  /*getHeaderArray(csvRecordsArr: any) {
+    let headers = (<any>csvRecordsArr[0]).split('\t');
     let headerArray = [];
     for (let j = 0; j < headers.length; j++) {
       headerArray.push(headers[j]);
     }
     return headerArray;
   }
+*/
   fileReset() {
     this.csvReader.nativeElement.value = "";
     this.archivos = [];
