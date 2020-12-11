@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 export class GruposgComponent implements OnInit {
 
   public status: string;
+  public title: string;
   public cursos: Curso[];
+  public grupos: Grupo[];
   public grupo: Grupo;
 
   constructor(
@@ -25,6 +27,7 @@ export class GruposgComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCursos();
+    this.getGrupos();
   }
 
   /*
@@ -42,19 +45,61 @@ export class GruposgComponent implements OnInit {
       }
     );
   }
-  
+
+  /*
+  * Obtiene todos los grupos de todos los cursos
+  */
+ getGrupos() {
+  this._cursosService.getAllGrupos().subscribe(
+    response => {
+      if (response.grupos) {
+        this.grupos = response.grupos;
+      }
+    },
+    err => {
+      console.log(<any>err);
+    }
+  );
+}
+
   onSubmit(form) {
     console.log(this.grupo);
-    this._cursosService.createGrupo(this.grupo).subscribe(
-      response => {
-        console.log(response);
-        form.reset();
-        this.router.navigate(['/vista-grupos']);
-      },
-      error => {
-        console.log(<any>error);
+    if (this.cursos.length == 0) {
+      this.status == "success";
+    } else {
+      for (let index = 0; index < this.cursos.length; index++) {
+        const cursito = this.cursos[index];
+        if (this.grupo.curso == cursito.nombre) {
+          this.grupos.forEach(grupini => {
+            if (this.grupo.grupo == grupini.grupo) {
+              this.status == "existing"
+            } else {
+              this.status = "success";
+            }
+          });
+        }
       }
-    );
-  }
+    }
 
+    if (this.status == "success") {
+      this._cursosService.createGrupo(this.grupo).subscribe(
+        response => {
+          if (response.cursos) {
+            this.status = "success";
+          } else {
+            this.status = "failed";
+          }
+
+          console.log(response);
+          form.reset();
+          this.router.navigate(['/vista-grupos']);
+        },
+        error => {
+          this.status = "failed";
+          console.log(<any>error);
+        }
+      );
+    }
+    this.status = "existing";
+  }
 }

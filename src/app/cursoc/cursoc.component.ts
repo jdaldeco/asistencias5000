@@ -59,10 +59,6 @@ export class CursocComponent implements OnInit {
   onSubmit(form) {
     console.log(this.curso);
 
-    /*gotoList() {
-      this.router.navigate(['/cursos']);
-    }
-  */
     /* 
     * status - Representa el valor de la peticion.
     * status = 'existing' despliega un mensaje informando 
@@ -75,16 +71,20 @@ export class CursocComponent implements OnInit {
     * no se pudo crear el curso.
     */
     // Se recorre la lista de los cursos
-    this.cursos.forEach(cursito => {
-      // Se valida que el curso ingresado no exista
-      if (cursito.nombre == this.curso.nombre) {
-        this.status = "existing";
-      }
-      // En caso de que no no haya coincidencia, se registra el curso
-      else {
-        this.status = "success";
-      }
-    });
+    if (this.cursos.length == 0) {
+      this.status == "success";
+    } else {
+      this.cursos.forEach(cursito => {
+        // Se valida que el curso ingresado no exista
+        if (cursito.nombre == this.curso.nombre) {
+          this.status = "existing";
+        }
+        // En caso de que no no haya coincidencia, se registra el curso
+        else {
+          this.status = "success";
+        }
+      });
+    }
 
     if (this.status == "success") {
       // SUBSCRIPCION AL METODO DEL SERVICIO, QUE ACCEDE AL METODO LA API 

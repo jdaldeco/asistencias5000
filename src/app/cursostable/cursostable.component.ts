@@ -60,6 +60,7 @@ export class CursostableComponent implements OnInit {
       }
     );
     this.ngOnInit();
+    window.location.reload();
   }
 
 

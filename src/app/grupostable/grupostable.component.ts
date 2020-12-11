@@ -54,7 +54,7 @@ export class GrupostableComponent implements OnInit {
   /*
   * Obtiene todos los grupos de todos los cursos
   */
-  getGruposFromCurso(curso) {
+  getGruposFrom(curso) {
     this._cursosService.getAllGruposFromCurso(curso).subscribe(
       response => {
         if (response.grupos) {
@@ -82,6 +82,7 @@ export class GrupostableComponent implements OnInit {
       }
     );
     this.ngOnInit();
+    window.location.reload();
   }
 
   ngOnDestroy(): void {

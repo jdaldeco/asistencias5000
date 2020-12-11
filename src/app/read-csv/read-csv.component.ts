@@ -1,17 +1,28 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Sesion } from '../models/sesion';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-read-csv',
   templateUrl: './read-csv.component.html',
   styleUrls: ['./read-csv.component.scss']
 })
-export class ReadCSVComponent{
+export class ReadCSVComponent implements OnInit{
   title = 'Leer archivos CSV';
   public archivos: any[] = [];
   @ViewChild('csvReader') csvReader: any;
+
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   
-  
+  constructor() {}
+
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10
+    };
+  }
   
   uploadListener($event: any): void {
     let text = [];
@@ -27,6 +38,7 @@ export class ReadCSVComponent{
         console.log(csvRecordsArray); 
         
         this.archivos = this.getDataRecordsArrayFromCSVFile(csvRecordsArray);
+        this.dtTrigger.next();
       };
       reader.onerror = function () {
         console.log('error is occured while reading file!');
@@ -49,7 +61,6 @@ export class ReadCSVComponent{
         csvRecord.curso = curruntRecord[2]; 
  
         csvArr.push(csvRecord);
-      
     }
     return csvArr;
   }
@@ -73,4 +84,7 @@ export class ReadCSVComponent{
     this.archivos = [];
   }
 
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
+  }
 }

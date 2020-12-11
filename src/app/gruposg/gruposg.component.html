@@ -1,6 +1,6 @@
 <input class="botonsin" type="button" value="GRUPOS" [routerLink]="['/vista-grupos']">
 <div class="form-container">
-    <h2>Grupos</h2>
+    <h2>{{ title }}</h2>
 
     <div class="msg-success" *ngIf="status == 'success'">
         El Grupo se ha creado correctamente
@@ -16,24 +16,23 @@
 
     <form #gruposForm="ngForm" (ngSubmit)="onSubmit(gruposForm)">
         <p>
-            <label for="nombre">Nombre del grupo</label>
-            <input type="text" name="grupo" #grupo="ngModel" [(ngModel)]="grupo.grupo" 
-                placeholder="Ingresa el nombre del grupo" required>
-            <span *ngIf="grupo.touched && !grupo.valid">
+            <label for="grupin">Nombre del grupo:</label>
+            <input type="text" name="grupin" #grupin="ngModel" [(ngModel)]="grupo.grupo" 
+                placeholder="Ingresa el nombre del grupo" maxlength="25" required>
+            <span *ngIf="grupin.touched && !grupin.valid">
                 Campo obligatorio *
             </span>
         </p>
 
         <p>
-            <label>Selecciona un curso:</label>
-
-            <select id="cursos-select" #curso="ngModel" name="curso" [(ngModel)]="grupo.curso" required>
+            <label for="curso">Selecciona un curso:</label>
+            <select id="cursos-select" name="curso" #curso="ngModel" [(ngModel)]="grupo.curso" required>
                 <option value="Selecciona un grupo" hidden selected>Selecciona un curso</option>
                 <option *ngFor="let cursito of cursos" value="{{ cursito.nombre }}">{{ cursito.nombre }}</option>
             </select>
         </p>
 
-            <input type="button" value="Cancelar" [routerLink]="['/vista-grupos']">
-            <input type="submit" value="Registrar" [disabled]="!gruposForm.form.valid">
+        <input type="button" value="Cancelar" [routerLink]="['/vista-grupos']">
+        <input type="submit" value="Registrar" [disabled]="!gruposForm.form.valid">
     </form>
 </div>
